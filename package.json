@@ -1,0 +1,47 @@
+{
+  "name": "nodejs-csv-mongodb",
+  "version": "1.0.0",
+  "description": "Node.js CSV & MongoDB demo",
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "csv",
+    "mongodb"
+  ],
+  "author": "bezkoder",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.1",
+    "cli-progress": "^3.9.0",
+    "colors": "^1.4.0",
+    "csv-writer": "^1.5.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "fast-csv": "^3.4.0",
+    "fs.extra": "^1.3.2",
+    "json2csv": "^4.5.4",
+    "mongodb": "^3.3.2",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.1",
+    "node-xlsx": "^0.16.1",
+    "objects-to-csv": "^1.3.6",
+    "raw-body": "^2.4.1",
+    "xlsx": "^0.17.0"
+  },
+  "main": "csv-mongodb-csvtojson.js",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bezkoder/nodejs-csv-mongodb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bezkoder/nodejs-csv-mongodb/issues"
+  },
+  "homepage": "https://github.com/bezkoder/nodejs-csv-mongodb#readme"
+}

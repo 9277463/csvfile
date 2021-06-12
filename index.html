@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Import Export csv file</title>
+    <meta name="description" content="Bootstrap.">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+    </style>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+
+
+.loader {
+  /*background-color: #353C3E;*/
+  position: fixed;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+  border: 16px solid #353C3E;
+  border-radius: 50%;
+  border-top: 16px solid #1C2021;
+  border-bottom: 16px solid #1C2021;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  z-index: 9999;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+    </style>
+</head>
+
+<body style="margin:20px auto">
+    <div class="container pageLoader">
+     <div class="loader"></div>
+        <div class="row header" style="text-align:center;color:green">
+            <h3>CSV FILE</h3>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-2"></div>              
+                <div class="col-sm-8">
+                    <span>example : 71800,71110</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>              
+                <div class="col-sm-2">
+                    <input type="text" name="InputExport" id="InputExport" value="">
+                </div>
+                <div class="col-sm-2">
+                    <button id="ExportBtn">EXPORT</button>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>IMPORT CSV FILE : </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="file" name="CsvFile" id="ImportBtn" accept=".csv" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>              
+
+            </div>
+        </div>
+        <hr>
+        <table id="myTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>code_postal</th>
+                    <th>ville</th>
+                    <th>adresse</th>
+                    <th>genre</th>
+                    <th>nom</th>
+                    <th>prenom</th>
+                    <th>tel1</th>
+                    <th>habitat</th>
+                    <th>age_moyen</th>
+                </tr>
+            </thead>
+            <tbody id="main">
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="./client.js"></script>
+
+</html>
