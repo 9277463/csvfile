@@ -69,16 +69,27 @@ btn_export.addEventListener('click', async function(e) {
     const ExportData = await Export({ cp: input_export });
     // console.log('ExportData : ', ExportData);
     if (ExportData) {
-        window.location.href = `./download/${ExportData.fileName}`;
-        setTimeout(function() {
-            const df = deletefile(ExportData.fileName);
-        }, 10000);
+        // window.location.href = `./download/${ExportData.fileName}`;
+        // setTimeout(function() {
+        //     const df = deleteDownloadfile(ExportData.fileName);
+        // }, 10000);
+        alert(`your file is ready : ./download/${ExportData.fileName}`);
 
     }
 });
 
-function deletefile(fileName) {
-    const deletefile = fetch('/deletefile', {
+function deleteDownloadfile(fileName) {
+    const deletefile = fetch('/deleteDownloadfile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ fileName: fileName })
+    });
+}
+
+function deleteUploadsfile(fileName) {
+    const deletefile = fetch('/deleteUploadsfile', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -91,15 +102,12 @@ const btn_import = document.getElementById('ImportBtn');
 btn_import.addEventListener('change', async function(e) {
     main.innerHTML = "<p>Loading...";
     $('.loader').show();
-    const ImportData = await Import(btn_import.files[0]).then(async function(response) {
-        // $('.loader').hide(); 
-        // console.log('responseqqqqq : ', response); 
-        if (response.ri > 0) {
-            alert(`${response.ri} rows Inserted in database!`);
-        }
-        if (response.rni > 0) {
-            alert(`${response.rni} rows already exists in database!`);
-        }
-        location.reload();
-    });
+    const ImportData = await Import(btn_import.files[0]);
+    if (ImportData.ri > 0) {
+        alert(`${ImportData.ri} rows Inserted in database!`);
+    }
+    if (ImportData.rni > 0) {
+        alert(`${ImportData.rni} rows already exists in database!`);
+    }    
+    location.reload();
 });

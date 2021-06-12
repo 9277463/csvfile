@@ -89,8 +89,13 @@ app.post('/import', async (req, res) => {
     res.send({ csvfile: req.body });
 });
 
-app.post('/deletefile', async (req, res) => {
+app.post('/deleteDownloadfile', async (req, res) => {
 	const r = await removeDownloadFile(req.body.fileName);
+    res.send({ deletefile_ok: req.body.fileName });
+});
+
+app.post('/deleteUploadsfile', async (req, res) => {
+    const r = await removeUploadsFile(req.body.fileName);
     res.send({ deletefile_ok: req.body.fileName });
 });
 
@@ -134,7 +139,7 @@ app.post('/upload', async function(req, res) {
             const r = await removeUploadsFile(fileName);
             const data = await db.collection("file").find({}).toArray();
             // const data = await db.collection("file").find({}).limit(20).toArray();
-            res.send({data: data, ri: rows_insert, rni: rows_ninsert});
+            res.send({data: data, ri: rows_insert, rni: rows_ninsert, fileName: fileName});
         });
     });
 });
