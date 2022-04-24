@@ -59,7 +59,7 @@ app.post('/export', async (req, res) => {
     let fileName = `code_postal${postal_code}${Math.floor(Date.now() / 1000)}.csv`;
 
     if (code_postal.length > 0) {
-        filter = { ...filter, "code_postal": { $in: code_postal } };
+        filter = { ...filter, "cp": { $in: code_postal } };
     }
 
     let data = {};
@@ -119,7 +119,7 @@ app.post('/upload', async function(req, res) {
 
             for (let i = 0; i < csvData.length; i++) {
                 try {
-                    const res = await db.collection("file").findOne({ "tel1": csvData[i].tel1 });
+                    const res = await db.collection("file").findOne({ "tel": csvData[i].tel });
                     if (!res) {
                         const res = await db.collection("file").insertOne(csvData[i]);
                         rows_insert++;
@@ -136,6 +136,7 @@ app.post('/upload', async function(req, res) {
             if (rows_ninsert > 0) {
                 rni = `already exists in database : ${rows_ninsert}`;
             }
+            console.log(rows_ninsert)
             const r = await removeUploadsFile(fileName);
             const data = await db.collection("file").find({}).toArray();
             // const data = await db.collection("file").find({}).limit(20).toArray();

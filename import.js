@@ -21,7 +21,7 @@ console.log(chalk.blue("file.csv was saved in the current directory!"));
     for (let i = 0; i < csvData.length; i++)
     {
       try {
-        const res = await db.collection("file").findOne({ "tel1": csvData[i].tel1 });
+        const res = await db.collection("file").findOne({ "tel": csvData[i].tel });
         if (!res) {
           const res = await db.collection("file").insertOne(csvData[i]);
           rows_insert++;

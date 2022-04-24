@@ -13,15 +13,13 @@ const getListFiles = (file) => {
     const TR = file
         .map((file) => `
       <tr>
-        <td>${file.code_postal}</td>
-        <td>${file.ville}</td>
+        <td>${file.nom_prenom}</td>
         <td>${file.adresse}</td>
-        <td>${file.genre}</td>
-        <td>${file.nom}</td>
-        <td>${file.prenom}</td>
-        <td>${file.tel1}</td>
+        <td>${file.cp}</td>
+        <td>${file.ville}</td>
+        <td>${file.tel}</td>
+        <td>${file.ages}</td>
         <td>${file.habitat}</td>
-        <td>${file.age_moyen}</td>
       </tr>`)
         .join("\n");
 
